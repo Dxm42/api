@@ -47,9 +47,7 @@ class UsersController {
         }
 
         if(password && old_password){
-            const checkOutPassword = await bcrypt.compare(old_password, user.password);
-
-            console.log(checkOutPassword)
+            const checkOutPassword = await bcrypt.compare(old_password, user.password);           
 
             if(!checkOutPassword){
                 throw new AppError("A senha antiga não confere");
