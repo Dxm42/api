@@ -9,12 +9,11 @@ const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 const usersRoutes = Router();
 const upload = multer(uploadConfig.MULTER)
 
-const useAvatarController = new UsersAvatarController();
-
 const usersController = new UsersController();
+const usersAvatarController = new UsersAvatarController();
 
 usersRoutes.post("/", usersController.create);
 usersRoutes.put("/",ensureAuthenticated, usersController.update);
-usersRoutes.patch("/avatar", ensureAuthenticated, upload.single("avatar"), useAvatarController.update);
+usersRoutes.patch("/avatar", ensureAuthenticated, upload.single("avatar"),usersAvatarController.update);
 
 module.exports = usersRoutes;
